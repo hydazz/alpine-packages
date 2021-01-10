@@ -1,0 +1,12 @@
+--- mongodb-src-r4.4.2/src/mongo/util/stacktrace_posix.cpp.orig	2020-11-10 10:33:26.000000000 +1100
++++ mongodb-src-r4.4.2/src/mongo/util/stacktrace_posix.cpp	2020-12-29 23:05:32.000000000 +1100
+@@ -71,6 +71,9 @@
+ #include <execinfo.h>
+ #endif
+ 
++// AlpineTODO: Better option??
++#define __ELF_NATIVE_CLASS 64
++
+ namespace mongo {
+ namespace stack_trace_detail {
+ namespace {

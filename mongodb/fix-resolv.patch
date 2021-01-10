@@ -1,0 +1,16 @@
+--- mongodb-src-r4.4.2/src/mongo/util/dns_query_posix-impl.h.orig	2020-11-10 10:33:26.000000000 +1100
++++ mongodb-src-r4.4.2/src/mongo/util/dns_query_posix-impl.h	2020-12-29 23:08:42.000000000 +1100
+@@ -39,6 +39,13 @@
+ #include <resolv.h>
+ // clang-format on
+ 
++// Support deprecated resolver, as in musl libc
++#ifndef res_ninit
++#define res_nclose(arg)
++#define res_ninit(arg)    res_init()
++#define res_nsearch(sta, nam, clas, typ, ans, alen)  res_search(nam, clas, typ, ans, alen)
++#endif
++
+ #include <stdio.h>
+ 
+ #include <iostream>

@@ -1,0 +1,25 @@
+--- mono-6.12.0.107/configure.ac.orig
++++ mono-6.12.0.107/configure.ac
+@@ -320,6 +320,11 @@ case "$host" in
+                 	# available during cross-compilation
+                 	mono_cv_uscore=no
+                 fi
++                case "$host" in
++                *-musl)
++                        AC_DEFINE(MUSL, 1, [musl libc])
++                        ;;
++                esac
+ 		case "$host" in
+ 		*-tizen-linux-*)
+ 			platform_tizen=yes
+--- mono-6.12.0.107/mono/utils/mono-os-mutex.h.orig	2020-12-10 06:31:20.000000000 +1100
++++ mono-6.12.0.107/mono/utils/mono-os-mutex.h	2020-12-30 19:28:16.000000000 +1100
+@@ -59,7 +59,7 @@ mono_os_mutex_init_type (mono_mutex_t *m
+ 	if (G_UNLIKELY (res != 0))
+ 		g_error ("%s: pthread_mutexattr_settype failed with \"%s\" (%d)", __func__, g_strerror (res), res);
+
+-#if !defined(__HAIKU__) && defined (PTHREAD_PRIO_INHERIT) && HAVE_DECL_PTHREAD_MUTEXATTR_SETPROTOCOL
++#if !defined(__HAIKU__) && !defined(MUSL) && defined (PTHREAD_PRIO_INHERIT) && HAVE_DECL_PTHREAD_MUTEXATTR_SETPROTOCOL
+ 	/* use PTHREAD_PRIO_INHERIT if possible */
+ 	res = pthread_mutexattr_setprotocol (&attr, PTHREAD_PRIO_INHERIT);
+ 	if (G_UNLIKELY (res != 0 && res != ENOTSUP))

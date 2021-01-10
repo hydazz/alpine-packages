@@ -1,0 +1,36 @@
+--- mongodb-src-r4.4.2/src/mongo/util/processinfo_linux.cpp.orig	2020-11-10 10:33:26.000000000 +1100
++++ mongodb-src-r4.4.2/src/mongo/util/processinfo_linux.cpp	2020-12-29 22:55:01.000000000 +1100
+@@ -43,13 +43,7 @@
+ #include <sys/time.h>
+ #include <sys/utsname.h>
+ #include <unistd.h>
+-#ifdef __BIONIC__
+-#include <android/api-level.h>
+-#elif __UCLIBC__
+ #include <features.h>
+-#else
+-#include <gnu/libc-version.h>
+-#endif
+ 
+ #include <boost/filesystem.hpp>
+ #include <boost/none.hpp>
+@@ -681,17 +675,10 @@ void ProcessInfo::SystemInfo::collectSys
+ 
+     BSONObjBuilder bExtra;
+     bExtra.append("versionString", LinuxSysHelper::readLineFromFile("/proc/version"));
+-#ifdef __BIONIC__
+-    std::stringstream ss;
+-    ss << "bionic (android api " << __ANDROID_API__ << ")";
+-    bExtra.append("libcVersion", ss.str());
+-#elif __UCLIBC__
++
+     std::stringstream ss;
+-    ss << "uClibc-" << __UCLIBC_MAJOR__ << "." << __UCLIBC_MINOR__ << "." << __UCLIBC_SUBLEVEL__;
++    ss << "musl-1.2.2";
+     bExtra.append("libcVersion", ss.str());
+-#else
+-    bExtra.append("libcVersion", gnu_get_libc_version());
+-#endif
+     if (!verSig.empty())
+         // optional
+         bExtra.append("versionSignature", verSig);
