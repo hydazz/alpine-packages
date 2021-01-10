@@ -1,0 +1,23 @@
+# Maintainer: Alex Hyde <alexanderhyde@icloud.com>
+pkgname=jemalloc
+pkgver=5.2.1
+pkgrel=0
+pkgdesc="jemalloc is a general purpose malloc(3)."
+url="https://github.com/jemalloc/jemalloc"
+arch="all"
+license="BSD-3-Clause"
+options="!check !fhs"
+makedepends="build-base"
+source="${pkgname}-${pkgver}.tar.bz2::https://github.com/jemalloc/jemalloc/releases/download/$pkgver/jemalloc-$pkgver.tar.bz2"
+builddir="$srcdir/$pkgname-$pkgver"
+
+build() {
+	./configure
+	make
+}
+
+package() {
+	make DESTDIR="$pkgdir/" install
+}
+
+sha512sums="0bbb77564d767cef0c6fe1b97b705d368ddb360d55596945aea8c3ba5889fbce10479d85ad492c91d987caacdbbdccc706aa3688e321460069f00c05814fae02  jemalloc-5.2.1.tar.bz2"
