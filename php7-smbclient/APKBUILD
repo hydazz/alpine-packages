@@ -1,7 +1,7 @@
 # Maintainer: Alex Hyde <alexanderhyde@icloud.com>
 pkgname=php7-smbclient
 pkgver=1.0.1
-pkgrel=0
+pkgrel=2
 pkgdesc="PHP extension that uses Samba's libsmbclient library to provide Samba related functions to PHP programs."
 url="https://github.com/eduardok/libsmbclient-php"
 arch="all"
