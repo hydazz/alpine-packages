@@ -4,10 +4,10 @@
 # Maintainer: Alex Hyde <alexanderhyde@icloud.com>
 pkgname=mono
 pkgver=6.12.0.107
-pkgrel=0
+pkgrel=1
 pkgdesc="Free implementation of the .NET platform including runtime and compiler"
 url="https://www.mono-project.com/"
-arch="x86_64 x86 armv7"
+arch="all"
 license="MIT"
 depends_dev="libgdiplus-dev zlib-dev"
 makedepends="$depends_dev autoconf automake cmake libtool linux-headers paxmark python3"
@@ -575,4 +575,4 @@ dbg() {
 }
 
 sha512sums="567cd37847bd5a0bf78df8a3ada2ed2cfb10e466fffb5aadc3d145751552720bdd1fc2a734fba142b91f2e221f42b6717d6eb3f7c8823cbec3d458b10712d7ea  mono-6.12.0.107.tar.xz
-96673eba8b4656359ae1cba5259c8ddc097a307c5ebc99833e370da09d45fd8cd10f5b795f37cb42892b87a462ccafe988b2bcf3d0c229282253f1e15af1afa6  fix-PTHREAD_PRIO_INHERIT.patch"
+942f68963e549360049ffe1233a2a826e815252ea4c0f9c5f68e4f7e7594503a1e68ff0732e735e087a153a2caf031d51c465fbe279b3e744688ff265163a4ff  fix-PTHREAD_PRIO_INHERIT.patch"
