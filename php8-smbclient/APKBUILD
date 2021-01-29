@@ -1,7 +1,7 @@
 # Maintainer: Alex Hyde <alexanderhyde@icloud.com>
 pkgname=php8-smbclient
-pkgver=1.0.1
-pkgrel=2
+pkgver=1.0.4
+pkgrel=0
 pkgdesc="PHP extension that uses Samba's libsmbclient library to provide Samba related functions to PHP programs."
 url="https://github.com/eduardok/libsmbclient-php"
 arch="all"
@@ -24,4 +24,4 @@ package() {
 	echo "extension=smbclient.so" >"$pkgdir"/etc/php8/conf.d/smbclient.ini
 }
 
-sha512sums="e7e5948b968a91bf46cae8996455fe0b9e79d834cb4866afda288718bff101b33db747a4ea51737b4f666cb288c31b3f5ccb355ad70c79a04a50a3f7dc9d3e23  php8-smbclient-1.0.1.tar.gz"
+sha512sums="1f9561733fd87dd57f005f81ccd814560625d525460eda78ebfd3be3afc72084558ca878186526aef7de226fba663d5b84ac1913de82cb973640eb15eb33f307  php8-smbclient-1.0.4.tar.gz"
