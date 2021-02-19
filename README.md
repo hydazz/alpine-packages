@@ -4,5 +4,5 @@ This repository contains the APKBUILD files to build the packages used in my Doc
 
 ## Credits
 
-- [alpinelinux/aports](https://github.com/alpinelinux/aports)
-- [spritsail/mono-apk](https://github.com/spritsail/mono-apk)
+-   [alpinelinux/aports](https://github.com/alpinelinux/aports)
+-   [spritsail/mono-apk](https://github.com/spritsail/mono-apk)
